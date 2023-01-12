@@ -2,15 +2,14 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
+  background: url(https://images3.alphacoders.com/135/135625.jpg);
 }
+
 .main {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100%;
-}
+  }
 
-h1 {
-  margin-bottom: 40px;
-}

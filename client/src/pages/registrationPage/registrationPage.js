@@ -7,10 +7,9 @@ const RegistrationPage = () => {
     <div className="container">
       <Header />
       <main className="main">
-        <h1>Tela de cadastro ninja</h1>
         <Form />
       </main>
-    </div>
+      </div>
   );
 };
 

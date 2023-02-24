@@ -1,13 +1,13 @@
 import Header from '../../components/header/header';
 import Form from '../../components/form/form';
-import './registrationPage.css';
+import styles from './registrationPage.module.css';
 
 const RegistrationPage = () => {
 
   return (
-    <div className="container">
+    <div className={styles.container}>
       <Header />
-      <main className="main">
+      <main className={styles.main}>
         <Form />
       </main>
       </div>

@@ -1,7 +1,16 @@
-.input {
-  width: 200px;
-  padding: 10px;
-  border-radius: 10px;
-  border: 0;
+.inputControl {
+display: flex;
+flex-direction: column;
+
+}
+
+.inputControl label {
   margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.inputControl input {
+  padding: 5px;
+  border-radius: 20px;
+  border: none;
 }

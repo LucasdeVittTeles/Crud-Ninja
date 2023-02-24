@@ -1,7 +1,12 @@
-import './input.css';
+import styles from "./input.css";
 
-const Input = (type, placeholder) => {
-  return <input className="input" {...type} {...placeholder} />;
+const Input = ({ type, text, name, placeholder, handleOnChange, value }) => {
+  return (
+    <div>
+      <label></label>
+      <input />
+    </div>
+  );
 };
 
 export default Input;

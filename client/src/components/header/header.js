@@ -1,4 +1,4 @@
-import { AiFillDelete, AiOutlineEdit, AiOutlineSearch } from 'react-icons/ai';
+import { AiOutlineSearch } from 'react-icons/ai';
 import { IoMdAdd } from 'react-icons/io';
 import './header.css';
 import { Link } from 'react-router-dom';

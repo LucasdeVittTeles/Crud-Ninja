@@ -1,0 +1,11 @@
+.editButtonContainer {
+    background-color: yellow;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    border-radius: 20px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+

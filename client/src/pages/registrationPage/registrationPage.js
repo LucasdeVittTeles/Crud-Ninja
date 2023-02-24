@@ -3,6 +3,7 @@ import Form from '../../components/form/form';
 import './registrationPage.css';
 
 const RegistrationPage = () => {
+
   return (
     <div className="container">
       <Header />

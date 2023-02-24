@@ -10,6 +10,16 @@ module.exports = {
   }
   },
 
+
+  async buscarPorId(req, res) {
+    try{
+    const ninja = await Ninja.findOne({ where: { id: req.params.id } });   
+    return res.json(ninja);
+  } catch (erro) {
+    console.log('Erro ao tentar listar ninjas: ' + erro)
+  }
+  },
+
   async cadastro(req, res) {
 
     try{

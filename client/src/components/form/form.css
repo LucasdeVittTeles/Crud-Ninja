@@ -19,3 +19,23 @@
   grid-column-gap: 10px;
   padding: 20px 0 20px;
 }
+
+.input {
+  width: 200px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 0;
+  margin-bottom: 10px;
+}
+
+.button {
+  padding: 10px;
+  border-radius: 10px;
+  border: 0;
+  cursor: pointer;
+  background-color: #63f316;
+  color: #1d0f02;
+  font-size: 16px;
+}
+
+

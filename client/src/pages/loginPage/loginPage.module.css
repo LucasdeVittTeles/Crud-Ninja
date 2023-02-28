@@ -1,5 +1,18 @@
 .container {
-  background: #7b68ee;
+  background:   #F2F3D9;
+  /* #A6B1E1 */
+  /* #DCD6F7 */
+  /* #820263 */
+  /* #0077b6 */
+  /* #00FFC5 */
+  /* #F2F3D9 */  
+  /* #52796F */
+  /* #FA9F42 */
+
+  /* VINI, FELIPE - Pergaminho */
+  /* PAI - Verde prostituta */
+  /* IGAO - AZUL */
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -15,13 +28,15 @@
 
 .container .content .contentImage {
   border-radius: 10px 0 0 10px ;
-  background-color: red;
+  background-image: url('../../../public/assets/vecteezy_ninja-warior-silhouette-vector-design_10821381.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
   height: 100%;
   width: 60%;
 }
 
 .container .content .contentLogin {
-  background-color: white;
+  background-color: #FFFFFF;
   border-radius: 0 10px 10px 0 ;
   display: flex;
   flex-direction: column;
@@ -29,4 +44,18 @@
   width: 40%;
   padding: 40px 20px 40px 20px ;
   justify-content: center;
+}
+
+.container .content .contentLogin h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.container .content .contentLogin .userRegister {
+  display: flex;
+  gap: 6px;
+}
+
+.container .content .contentLogin .userRegister span {
+ font-size: 14px;
 }

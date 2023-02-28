@@ -1,12 +1,20 @@
-import styles from "./input.css";
+import styles from "./input.module.css";
 
 const Input = ({ type, text, name, placeholder, handleOnChange, value }) => {
   return (
-    <div>
-      <label></label>
-      <input />
+    <div className={styles.inputControl}>
+      <label htmlFor={name}>{text}</label>
+      <input 
+      type={type}
+      name={name}
+      id={name}
+      placeholder={placeholder}
+      onChange={handleOnChange}
+      value={value}
+      />
     </div>
   );
 };
 
 export default Input;
+                                                      

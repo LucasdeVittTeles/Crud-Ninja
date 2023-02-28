@@ -1,9 +1,10 @@
-import './button.css';
+import styles from'./button.module.css';
 
-const Button = (type) => {
+const Button = ({type, text, backgroundColor, color, handleOnClick}) => {
+
   return (
-    <button {...type} className="button">
-      Salvar
+    <button className={styles.button} type={type} style= {{  backgroundColor: backgroundColor, color: color }}>
+      {text}
     </button>
   );
 };

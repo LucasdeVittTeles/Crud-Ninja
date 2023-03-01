@@ -1,0 +1,27 @@
+.container {
+  background: #f2f3d9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.container .content {
+  display: flex;
+  justify-content: space-between;
+  background-image: url( '../../../public/assets/vecteezy_template-logo-silhouette-samurai-background-red-moon-from-japan_7163193.jpg ');
+  justify-content: center;
+  width: 60vw;
+  height: 60vh;
+  border-radius: 10px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.container .content .formRegister {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #FFFFFF;
+  padding: 0 60px 0 60px;
+}

@@ -26,7 +26,7 @@ const LoginPage = () => {
           <Button type="submit" text='Login' backgroundColor= '#D81F25' color='#FFFFFF'  />
           <div className={styles.userRegister}>
           <span>Não tem uma conta?</span>
-          <Link to={"/"} style={{ fontSize: 14, textDecoration: 0, color: "#D81F25" }}>Cadastre-se</Link>
+          <Link to={"/userRegistration"} style={{ fontSize: 14, textDecoration: 0, color: "#D81F25" }}>Cadastre-se</Link>
           </div>
         </div>
       </div>

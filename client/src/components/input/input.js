@@ -1,6 +1,7 @@
 import styles from "./input.module.css";
 
-const Input = ({ type, text, name, placeholder, handleOnChange, value }) => {
+const Input = ({ type, text, name, placeholder, handleOnChange, value, alert }) => {
+
   return (
     <div className={styles.inputControl}>
       <label htmlFor={name}>{text}</label>
@@ -12,6 +13,7 @@ const Input = ({ type, text, name, placeholder, handleOnChange, value }) => {
       onChange={handleOnChange}
       value={value}
       />
+      <span className={styles.spanRequired}>{alert}</span>
     </div>
   );
 };

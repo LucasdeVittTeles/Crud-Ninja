@@ -4,7 +4,7 @@
   width: 100%;
 }
 
-.card {
+.cardContainer .card {
   width: 100%;
   padding: 30px;
   display: flex;
@@ -12,27 +12,40 @@
   align-items: center;
   border-radius: 15px;
   margin: 20px;
-  background-color: aliceblue;
+  background-color: #FFFFFF;
 }
 
-h1 {
+.cardContainer .card h1 {
 margin-bottom: 10px;
 }
 
-h2 {
+.cardContainer .card h2 {
     margin-bottom: 10px;
 }
 
-.content {
+.cardContainer .card .content {
   width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
 }
 
-.cardButtons {
+.cardContainer .cardButtons {
   display: flex;
   flex-direction: column;
   padding: 0 20px 0 20px;
   gap: 10px;
 }
+
+.cardContainer .cardButtons .button {
+  width: 70px;
+  height: 70px;
+  display: flex;
+  border-radius: 20px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+
+

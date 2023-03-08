@@ -1,19 +1,21 @@
-import "./buttonEdit.css";
-import { AiFillEdit } from "react-icons/ai";
-import { useNavigate } from "react-router-dom";
+/* comentado para lembrar do que fiz na primeira vez */
+
+// import "./buttonEdit.css";
+// import { AiFillEdit } from "react-icons/ai";
+// import { useNavigate } from "react-router-dom";
 
 
-const ButtonEdit = (id) => {
+// const ButtonEdit = (id) => {
 
-const navigate = useNavigate();
+// const navigate = useNavigate();
 
-  return (
-    <button
-    onClick={() => navigate('/editPage', {state: {id}})}
-    className="editButtonContainer">
-      <AiFillEdit size={32} />
-    </button>
-  );
-};
+//   return (
+//     <button
+//     onClick={() => navigate('/editPage', {state: {id}})}
+//     className="editButtonContainer">
+//       <AiFillEdit size={32} />
+//     </button>
+//   );
+// };
 
-export default ButtonEdit;
+// export default ButtonEdit;

@@ -11,11 +11,11 @@ const RegistrationPage = () => {
   const [name, setName] = useState("");
   const [age, setAge] = useState(null);
   const [ninjaClan, setNinjaClan] = useState("");
-  const [numberMissions, setNumberMissions] = useState(0);
+  const [numberMissions, setNumberMissions] = useState(null);
   const [ranking, setRanking] = useState("");
 
   const [nameError, setNameError] = useState("");
-  const [ageError, setAgeError] = useState(0);
+  const [ageError, setAgeError] = useState("");
   const [ninjaClanError, setNinjaClanError] = useState("");
   const [numberMissionsError, setNumberMissionsError] = useState("");
 
@@ -28,7 +28,7 @@ const RegistrationPage = () => {
 
   const alertAge = useCallback(() => {
     setAgeError("");
-    if (isNaN(age) && age !== null) {
+    if (!age) {
       setAge(null);
     }
 
@@ -49,7 +49,10 @@ const RegistrationPage = () => {
 
   const alertNumberMissions = useCallback(() => {
     setNumberMissionsError("");
-    if (numberMissions === 0) {
+    if (!numberMissions) {
+      setNumberMissions(null);
+    }
+    if (numberMissions === null) {
       setNumberMissionsError(messagesAlert.required);
     }
     if (numberMissions < 0) {

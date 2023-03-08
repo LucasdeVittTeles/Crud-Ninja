@@ -1,17 +1,18 @@
-.container_listingPage {
+.containerListingPage {
     height: 100vh;
     display: flex;
     flex-direction: column;
+    background-color: #F2F3D9;
 }
   
-.main_listingPage {
+.mainListingPage {
     border-radius: 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
     height: auto;
-    background-color: #1d0f02;
+    background-color: #050505ff;
     padding: 30px;
     margin: 30px 300px 0 300px;
     scroll-behavior: auto;

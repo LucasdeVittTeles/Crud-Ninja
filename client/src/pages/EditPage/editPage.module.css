@@ -2,7 +2,7 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
-  background: #f2f3d9;
+  background-color: #f2f3d9;
 }
 
 .container .main {
@@ -13,23 +13,23 @@
   height: 100%;
 }
 
-.container .main .form {
+.form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   width: 400px;
   padding: 30px 20px 20px;
   border-radius: 10px;
 }
 
-.container .main .form .ninjaStar {
-  margin-bottom: 20px;
-}
-
-.container .main .form .rankingNinja {
+.form .rankingNinjaEdit {
   display: grid;
   grid-template-columns: auto auto;
   grid-column-gap: 10px;
   padding: 20px 0px 0px;
+}
+
+.form h1 {
+  margin-bottom: 20px;
 }

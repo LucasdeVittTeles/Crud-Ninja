@@ -3,9 +3,9 @@ import Input from "../../components/input/input";
 import Button from "../../components/button/button";
 import { messagesAlert } from "../../constants/messagesAlert";
 import { useCallback, useEffect, useState } from "react";
+import axios from "axios";
 
 const LoginPage = () => {
-  
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
 
@@ -24,6 +24,7 @@ const LoginPage = () => {
   // };
 
   const alertUserName = useCallback(() => {
+    setUserNameError("");
     if (userName === "") {
       setUserNameError(messagesAlert.required);
     }
@@ -33,6 +34,7 @@ const LoginPage = () => {
   }, [userName]);
 
   const alertPassword = useCallback(() => {
+    setPasswordError("");
     if (password === "") {
       setPasswordError(messagesAlert.required);
     }
@@ -43,14 +45,29 @@ const LoginPage = () => {
 
   useEffect(() => {
     alertUserName();
+  }, [userName]);
+
+  useEffect(() => {
     alertPassword();
-  }, [userName, password]);
+  }, [password]);
+
+  const postUser = async () => {
+    try{
+      await axios.post("http://localhost:5000/cadastroUsuario", {
+        userName: userName,
+        password: password
+      });
+    } catch (error) {
+      console.log(error)
+    }
+  };
+
 
   return (
     <div className={styles.container}>
       <div className={styles.content}>
         <form className={styles.formRegister}>
-          <h2>Cadastro de usuário</h2>
+          <h2>CADASTRO DE USUÁRIO</h2>
           <Input
             type="text"
             name="user"
@@ -74,6 +91,7 @@ const LoginPage = () => {
             text="Cadastrar"
             backgroundColor="#D81F25"
             color="#FFFFFF"
+            handleOnClick={postUser}
           />
         </form>
       </div>

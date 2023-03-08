@@ -2,14 +2,34 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
-  background: url(https://images3.alphacoders.com/135/135625.jpg);
+  background: #f2f3d9;
 }
 
-.main {
+.container .main {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100%;
-  }
+}
 
+.container .main .form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #FFFFFF;
+  width: 400px;
+  padding: 30px 20px 20px;
+  border-radius: 10px;
+}
+
+.container .main .form .ninjaStar {
+  margin-bottom: 20px;
+}
+
+.container .main .form .rankingNinja {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-column-gap: 10px;
+  padding: 20px 0 0px;
+}

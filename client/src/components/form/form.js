@@ -1,27 +1,89 @@
 import { GiNinjaStar } from "react-icons/gi";
 import axios from "axios";
 import "./form.css";
-import { useState } from "react";
+import { useCallback, useState, useEffect } from "react";
+import Input from "../../components/input/input";
+import Button from "../../components/button/button";
+import { messagesAlert } from "../../constants/messagesAlert";
 
 const Form = () => {
-
-  const [nome, setNome] = useState("");
-  const [idade, setIdade] = useState(0);
-  const [claNinja, setClaNinja] = useState("");
-  const [numeroMissoes, setNumeroMissoes] = useState(0);
+  
+  const [name, setName] = useState("");
+  const [age, setAge] = useState(null);
+  const [ninjaClan, setNinjaClan] = useState("");
+  const [numberMissions, setNumberMissions] = useState(0);
   const [ranking, setRanking] = useState("");
 
+  const [nameError, setNameError] = useState("");
+  const [ageError, setAgeError] = useState(0);
+  const [ninjaClanError, setNinjaClanError] = useState("");
+  const [numberMissionsError, setNumberMissionsError] = useState("");
+
+  const alertName = useCallback(() => {
+    setNameError("");
+    if (name === "") {
+      setNameError(messagesAlert.required);
+    }
+  }, [name]);
+
+  const alertAge = useCallback(() => {
+    setAgeError("");
+    if (isNaN(age) && age !== null) {
+      setAge(null);
+    }
+
+    if (age === null) {
+      setAgeError(messagesAlert.required);
+    }
+    if (age < 0) {
+      setAgeError(messagesAlert.positiveNumber);
+    }
+  }, [age]);
+
+  const alertNinjaClan = useCallback(() => {
+    setNinjaClanError("");
+    if (ninjaClan === "") {
+      setNinjaClanError(messagesAlert.required);
+    }
+  }, [ninjaClan]);
+
+  const alertNumberMissions = useCallback(() => {
+    setNumberMissionsError("");
+    if (numberMissions === 0) {
+      setNumberMissionsError(messagesAlert.required);
+    }
+    if (numberMissions < 0) {
+      setNumberMissionsError(messagesAlert.positiveNumber);
+    }
+  }, [numberMissions]);
+
+  useEffect(() => {
+    alertName();
+  }, [name]);
+
+  useEffect(() => {
+    alertAge();
+  }, [age]);
+
+  useEffect(() => {
+    alertNinjaClan();
+  }, [ninjaClan]);
+
+  useEffect(() => {
+    alertNumberMissions();
+  }, [numberMissions]);
+
   const postNinja = async () => {
-    try{
+    try {
       await axios.post("http://localhost:5000/cadastro", {
-        nome: nome,
-        idade: idade,
-        claNinja: claNinja,
-        numeroMissoes: numeroMissoes,
+        nome: name,
+        idade: age,
+        claNinja: ninjaClan,
+        numeroMissoes: numberMissions,
         ranking: ranking,
       });
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   };
 
@@ -30,29 +92,49 @@ const Form = () => {
       <div className="ninjaStar">
         <GiNinjaStar size={35} />
       </div>
-      <input
-        className="input"
+
+      <Input
         type="text"
-        placeholder="Digite o nome do ninja"
-        onChange={(e) => setNome(e.target.value)}
+        name="name"
+        placeholder="Defina o nome do ninja"
+        text="Nome do Ninja"
+        handleOnChange={(e) => {
+          setName(e.target.value);
+        }}
+        alert={nameError}
       />
-      <input
-        className="input"
+
+      <Input
         type="number"
-        placeholder="Digite a idade do ninja"
-        onChange={(e) => setIdade(e.target.value)}
+        name="age"
+        placeholder="Defina a idade do ninja"
+        text="Idade do Ninja"
+        handleOnChange={(e) => {
+          setAge(e.target.value);
+        }}
+        alert={ageError}
       />
-      <input
-        className="input"
+
+      <Input
         type="text"
-        placeholder="Digite o clã do ninja"
-        onChange={(e) => setClaNinja(e.target.value)}
+        name="ninjaClan"
+        placeholder="Defina o clã do ninja"
+        text="Clã ninja"
+        handleOnChange={(e) => {
+          setNinjaClan(e.target.value);
+        }}
+        alert={ninjaClanError}
       />
-      <input
-        className="input"
+
+      <Input
         type="number"
-        placeholder="Digite o numero de Missões"
-        onChange={(e) => setNumeroMissoes(e.target.value)}
+        name="numberMissions"
+        placeholder="Digite o numero de Missões realizadas"
+        text="Numero de Missões"
+        handleOnChange={(e) => {
+          setNumberMissions(e.target.value);
+        }}
+        alert={numberMissionsError}
       />
       <h4 className="RankingTitle">Selecione o Ranking de ninja</h4>
       <div className="rankingNinja">
@@ -89,9 +171,13 @@ const Form = () => {
         />
         <label for="ranking4">kage</label>
       </div>
-      <button className="button" type="submit" onClick={() => postNinja()}>
-        Salvar
-      </button>
+      <Button
+        type="submit"
+        text="Cadastrar Ninja"
+        backgroundColor="#D81F25"
+        color="#FFFFFF"
+        handleOnClick={postNinja}
+      />
     </form>
   );
 };

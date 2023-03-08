@@ -22,3 +22,8 @@ margin-bottom: 10px;
   box-shadow: 0 0 0 0;
   outline: 0;
 }
+
+.inputControl span {
+  color: #D81F25;
+  font-size: 13px;
+}

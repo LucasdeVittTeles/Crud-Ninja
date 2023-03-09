@@ -6,12 +6,21 @@ require("dotenv").config();
 module.exports = {
   async criarUsuario(req, res) {
     try {
+      const user = req.body.userName;
+      const pass = req.body.password;
+
+      if (user.length || pass.length) {
+        return res
+          .status(400)
+          .json({ msg: "Ambos os campos devem ter mais de 6 caracteres." });
+      }
+
       const usuarioExiste = await User.findOne({
         where: { userName: req.body.userName },
       });
 
       if (usuarioExiste) {
-        console.log("User already exists.");
+        console.log("Esse usario ja existe.");
         return;
       }
 
@@ -26,9 +35,11 @@ module.exports = {
       await User.create(usuario);
       usuario.password = undefined;
 
-      return res.json({ msg: "Succesfully created user." });
+      return res.status(200).json({ msg: "Usuario criado com sucesso." });
     } catch (error) {
-      console.log(error);
+      return res
+        .status(500)
+        .json({ msg: "Erro ao tentar cadastrar usuario: " + error });
     }
   },
 
@@ -53,7 +64,9 @@ module.exports = {
 
       const secret = process.env.SECRET;
 
-      const token = jwt.sign({ userId: usuario.id}, secret, {expiresIn: 600 });
+      const token = jwt.sign({ userId: usuario.id }, secret, {
+        expiresIn: 600,
+      });
 
       return res
         .status(200)

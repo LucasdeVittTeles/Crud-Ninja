@@ -2,7 +2,7 @@ import styles from "./notification.module.css";
 import { useState, useEffect } from "react";
 
 const Notification = ({ type, msg }) => {
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(true);
 
   useEffect(() => {
     if (!msg) {
@@ -13,7 +13,7 @@ const Notification = ({ type, msg }) => {
 
     const timer = setTimeout(() => {
       setVisible(false);
-    }, 3000);
+    }, 8000);
 
     return () => clearTimeout(timer);
   }, [msg]);

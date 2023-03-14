@@ -9,7 +9,7 @@ module.exports = {
       const user = req.body.userName;
       const pass = req.body.password;
 
-      if (user.length || pass.length) {
+      if (user.length < 6 || pass.length < 6) {
         return res
           .status(400)
           .json({ msg: "Ambos os campos devem ter mais de 6 caracteres." });
@@ -64,9 +64,7 @@ module.exports = {
 
       const secret = process.env.SECRET;
 
-      const token = jwt.sign({ userId: usuario.id }, secret, {
-        expiresIn: 600,
-      });
+      const token = jwt.sign({ userId: usuario.id }, secret);
 
       return res
         .status(200)

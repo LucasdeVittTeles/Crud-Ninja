@@ -1,4 +1,4 @@
-import Rotas from './Routes';
+import Rotas from '../src/routes/Routes';
 
 const App = () => {
   return <Rotas />;

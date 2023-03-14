@@ -6,6 +6,7 @@ import { useCallback, useState, useEffect } from "react";
 import Input from "../../components/input/input";
 import Button from "../../components/button/button";
 import { messagesAlert } from "../../constants/messagesAlert";
+import Notification from "../../components/notification/notification";
 
 const RegistrationPage = () => {
   const [name, setName] = useState("");
@@ -78,13 +79,14 @@ const RegistrationPage = () => {
 
   const postNinja = async () => {
     try {
-      await axios.post("http://localhost:5000/cadastro", {
+      const res = await axios.post("http://localhost:5000/cadastro", {
         nome: name,
         idade: age,
         claNinja: ninjaClan,
         numeroMissoes: numberMissions,
         ranking: ranking,
       });
+      console.log(res)
     } catch (error) {
       console.log(error);
     }
@@ -94,6 +96,7 @@ const RegistrationPage = () => {
     <div className={styles.container}>
       <Header />
       <main className={styles.main}>
+        <Notification type="success" msg='sdsd' />
         <form className={styles.form}>
           <div className={styles.ninjaStar}>
             <GiNinjaStar size={35} />

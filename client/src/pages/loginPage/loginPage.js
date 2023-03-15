@@ -20,7 +20,9 @@ const LoginPage = () => {
       });
       const token = res.data;
       localStorage.setItem("token", token.token);
-      navigate("/")
+      navigate('/');
+      navigate(0)
+      
     } catch (error) {
       console.log(error);
     }

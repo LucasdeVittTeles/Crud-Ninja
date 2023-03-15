@@ -13,7 +13,7 @@ const RegistrationPage = () => {
   const [age, setAge] = useState(null);
   const [ninjaClan, setNinjaClan] = useState("");
   const [numberMissions, setNumberMissions] = useState(null);
-  const [ranking, setRanking] = useState("");
+  const [ranking, setRanking] = useState("Genin");
 
   const [nameError, setNameError] = useState("");
   const [ageError, setAgeError] = useState("");
@@ -152,6 +152,7 @@ const RegistrationPage = () => {
               id="ranking1"
               name="ranking"
               value="Genin"
+              checked={"Genin" === ranking}
               onChange={(e) => setRanking(e.target.value)}
             />
             <label for="ranking1">Genin</label>
@@ -160,6 +161,7 @@ const RegistrationPage = () => {
               id="ranking2"
               name="ranking"
               value="Chunin"
+              checked={"Chunin" === ranking}
               onChange={(e) => setRanking(e.target.value)}
             />
             <label for="ranking2">Chunin</label>
@@ -168,6 +170,7 @@ const RegistrationPage = () => {
               id="ranking3"
               name="ranking"
               value="Jounin"
+              checked={"Jounin" === ranking}
               onChange={(e) => setRanking(e.target.value)}
             />
             <label for="ranking3">Jounin</label>
@@ -176,6 +179,7 @@ const RegistrationPage = () => {
               id="ranking4"
               name="ranking"
               value="Kage"
+              checked={"Kage" === ranking}
               onChange={(e) => setRanking(e.target.value)}
             />
             <label for="ranking4">kage</label>

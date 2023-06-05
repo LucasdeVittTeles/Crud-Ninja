@@ -5,6 +5,7 @@ import { useState, useEffect, useCallback } from "react";
 import Input from "../../components/input/input";
 import Button from "../../components/button/button";
 import { messagesAlert } from "../../constants/messagesAlert";
+import { toast } from "react-toastify";
 import axios from "axios";
 
 const EditPage = () => {
@@ -16,7 +17,6 @@ const EditPage = () => {
   const [ninjaClan, setNinjaClan] = useState("");
   const [numberMissions, setNumberMissions] = useState(null);
   const [ranking, setRanking] = useState("");
-
 
   const [nameError, setNameError] = useState("");
   const [ageError, setAgeError] = useState("");
@@ -36,21 +36,25 @@ const EditPage = () => {
       setRanking(data.ranking);
     } catch (error) {
       console.log(error);
+      toast.error("Erro interno no sistema");
     }
   };
 
   const putNinja = async () => {
-    try {
-      await axios.put(`http://localhost:5000/editar/${idNinja.id}`, {
+    await axios
+      .put(`http://localhost:5000/editar/${idNinja.id}`, {
         nome: name,
         idade: age,
         claNinja: ninjaClan,
         numeroMissoes: numberMissions,
         ranking: ranking,
+      })
+      .then(() => {
+        toast.success("Ninja editado com sucesso");
+      })
+      .catch((error) => {
+        toast.error("Falha ao editar ninja: " + error.response.data.msg);
       });
-    } catch (error) {
-      console.log(error);
-    }
   };
 
   const alertName = useCallback(() => {
@@ -211,7 +215,7 @@ const EditPage = () => {
             backgroundColor="#D81F25"
             color="#FFFFFF"
             handleOnClick={putNinja}
-          />  
+          />
         </form>
       </main>
     </div>

@@ -6,7 +6,7 @@ import { useCallback, useState, useEffect } from "react";
 import Input from "../../components/input/input";
 import Button from "../../components/button/button";
 import { messagesAlert } from "../../constants/messagesAlert";
-import Notification from "../../components/notification/notification";
+import { toast } from "react-toastify";
 
 const RegistrationPage = () => {
   const [name, setName] = useState("");
@@ -78,25 +78,26 @@ const RegistrationPage = () => {
   }, [numberMissions]);
 
   const postNinja = async () => {
-    try {
-      const res = await axios.post("http://localhost:5000/cadastro", {
+    await axios
+      .post("http://localhost:5000/cadastro", {
         nome: name,
         idade: age,
         claNinja: ninjaClan,
         numeroMissoes: numberMissions,
         ranking: ranking,
+      })
+      .then(() => {
+        toast.success("Ninja cadastrado com sucesso");
+      })
+      .catch((error) => {
+        toast.error("Falha ao cadastrar ninja: " + error.response.data.msg);
       });
-      console.log(res)
-    } catch (error) {
-      console.log(error);
-    }
   };
 
   return (
     <div className={styles.container}>
       <Header />
       <main className={styles.main}>
-        <Notification type="success" msg='sdsd' />
         <form className={styles.form}>
           <div className={styles.ninjaStar}>
             <GiNinjaStar size={35} />

@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const LoginPage = () => {
   const [userName, setUserName] = useState("");
@@ -13,19 +14,20 @@ const LoginPage = () => {
   const navigate = useNavigate();
 
   const postLogin = async () => {
-    try {
-      const res = await axios.post("http://localhost:5000/login", {
+    await axios
+      .post("http://localhost:5000/login", {
         userName: userName,
         password: password,
+      })
+      .then((data) => {
+        localStorage.setItem("token", data.data.token);
+        navigate("/");
+        navigate(0);
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error("Falha ao realizar login: " + error.response.data.msg);
       });
-      const token = res.data;
-      localStorage.setItem("token", token.token);
-      navigate('/');
-      navigate(0)
-      
-    } catch (error) {
-      console.log(error);
-    }
   };
 
   return (

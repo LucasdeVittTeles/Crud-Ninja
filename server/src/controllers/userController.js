@@ -50,7 +50,7 @@ module.exports = {
       });
 
       if (!usuario) {
-        return res.status(404).json({ msg: "User hot found." });
+        return res.status(404).json({ msg: "Usuario nao encontrado." });
       }
 
       const validarSenha = await bcrypt.compare(

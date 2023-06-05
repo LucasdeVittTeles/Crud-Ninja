@@ -3,9 +3,12 @@ import Input from "../../components/input/input";
 import Button from "../../components/button/button";
 import { messagesAlert } from "../../constants/messagesAlert";
 import { useCallback, useEffect, useState } from "react";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const LoginPage = () => {
+  const navigate = useNavigate();
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
 
@@ -52,16 +55,19 @@ const LoginPage = () => {
   }, [password]);
 
   const postUser = async () => {
-    try{
-      await axios.post("http://localhost:5000/cadastroUsuario", {
+    await axios
+      .post("http://localhost:5000/cadastroUsuario", {
         userName: userName,
-        password: password
+        password: password,
+      })
+      .then((data) => {
+        navigate("/loginPage");
+        toast.success("Sucesso ao cadastrar usuario");
+      })
+      .catch((error) => {
+        toast.error("Falha ao cadastrar usuario" + error.response.data.msg);
       });
-    } catch (error) {
-      console.log(error)
-    }
   };
-
 
   return (
     <div className={styles.container}>

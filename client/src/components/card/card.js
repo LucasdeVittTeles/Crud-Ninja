@@ -3,6 +3,7 @@ import axios from "axios";
 import { AiFillDelete, AiFillEdit } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 const Card = () => {
   const [ninjas, setNinjas] = useState([]);
@@ -20,7 +21,14 @@ const Card = () => {
   };
 
   const deleteNinja = async (id) => {
-    await axios.delete(`http://localhost:5000/deletar/${id}`);
+    await axios
+      .delete(`http://localhost:5000/deletar/${id}`)
+      .then(() => {
+        toast.success("Ninja deletado com sucesso.");
+      })
+      .catch((error) => {
+        toast.error("Erro ao deletar ninja: " + error.response.data.msg);
+      });
   };
 
   const shippingId = (id) => {
@@ -29,7 +37,7 @@ const Card = () => {
 
   useEffect(() => {
     getNinjas();
-  }, []);
+  }, [ninjas]);
 
   return ninjas.map((ninja) => (
     <div className={styles.cardContainer} key={ninja.id}>

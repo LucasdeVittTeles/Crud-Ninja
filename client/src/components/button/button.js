@@ -6,7 +6,11 @@ const Button = ({ type, text, backgroundColor, color, handleOnClick }) => {
       className={styles.button}
       type={type}
       style={{ backgroundColor: backgroundColor, color: color }}
-      onClick={() => handleOnClick()}
+      onClick={(e) => {
+        e.preventDefault();
+        handleOnClick();
+
+      }}
     >
       {text}
     </button>

@@ -3,13 +3,21 @@ import { useState, useEffect } from "react";
 
 const Notification = ({ type, msg }) => {
   const [visible, setVisible] = useState(true);
+  const [tipo, setTipo] = useState('');
+
 
   useEffect(() => {
-    if (!msg) {
+    if (!msg ||  typeof msg !== "string" ) {
       setVisible(false);
       return;
     }
     setVisible(true);
+
+    if(type === 200){
+      setTipo('success')
+    }else{
+      setTipo('error')
+    }
 
     const timer = setTimeout(() => {
       setVisible(false);
@@ -21,7 +29,7 @@ const Notification = ({ type, msg }) => {
   return (
     <>
       {visible && (
-        <div className={`${styles.message} ${styles[type]}`}>{msg}</div>
+        <div className={`${styles.message} ${styles[tipo]}`}>{msg}</div>
       )}
     </>
   );

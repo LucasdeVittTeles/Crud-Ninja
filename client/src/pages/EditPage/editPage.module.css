@@ -33,3 +33,12 @@
 .form h1 {
   margin-bottom: 20px;
 }
+
+@media (max-width: 570px) {
+  
+  .container .main .form {
+    width: 100%;
+    padding: 20px 0px 20px;
+    border-radius: 0;
+  }
+}

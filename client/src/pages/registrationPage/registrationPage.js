@@ -88,6 +88,7 @@ const RegistrationPage = () => {
       })
       .then(() => {
         toast.success("Ninja cadastrado com sucesso");
+        
       })
       .catch((error) => {
         toast.error("Falha ao cadastrar ninja: " + error.response.data.msg);
